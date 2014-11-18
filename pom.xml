@@ -12,6 +12,15 @@
         <start-class>com.tistory.nomimic.openapi.Application</start-class>
     </properties>
 
+
+    <repositories>
+        <!-- Spring Security Test Repository -->
+        <repository>
+            <id>spring-milestones</id>
+            <url>http://repo.springsource.org/libs-milestone</url>
+        </repository>
+    </repositories>
+
     <!-- Inherit defaults from Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -26,6 +35,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!-- for OAuth 2.0 -->
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
@@ -38,6 +52,12 @@
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth</artifactId>
             <version>2.0.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>4.0.0.M1</version>
         </dependency>
 
         <!-- Test -->
@@ -60,17 +80,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>${start-class}</mainClass>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.1</version>
-                <configuration>
-                    ...
-                    <aggregate>true</aggregate>
-                    ...
                 </configuration>
             </plugin>
         </plugins>
