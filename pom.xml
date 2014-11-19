@@ -7,6 +7,7 @@
     <groupId>com.tistory.nomimic</groupId>
     <artifactId>open-api</artifactId>
     <version>1.0.0.SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <start-class>com.tistory.nomimic.openapi.Application</start-class>
@@ -60,6 +61,13 @@
             <version>4.0.0.M1</version>
         </dependency>
 
+        <!-- ASPECT -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
@@ -75,6 +83,25 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerVersion>1.8</compilerVersion>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>false</skipTests>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

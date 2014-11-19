@@ -1,5 +1,6 @@
 package com.tistory.nomimic.openapi.api.v1;
 
+import com.tistory.nomimic.openapi.aspect.SLACheck;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ public class EncoderAPI {
      * @return encoded String
      * @throws Exception
      */
+    @SLACheck //서비스 이용한계 체크하도록 하는 커스텀 어노테이션
     @RequestMapping(method = RequestMethod.POST,produces = {"application/json; charset=UTF-8"})
     @ResponseBody
     public String encodeHexString(@RequestParam("msg") String message) throws Exception {
@@ -29,6 +31,13 @@ public class EncoderAPI {
         return result;
     }
 
+    /**
+     * 익센셥이 발생시, 해당 에러 메세지를 HttpBody로 전송하는 함수
+     *
+     * @param e Exception Object
+     * @return
+     * @throws Exception
+     */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
