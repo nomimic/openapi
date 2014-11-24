@@ -20,6 +20,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http
                 .authorizeRequests().antMatchers("/v1/encoder")
                 .access("#oauth2.hasScope('encoder')");
+
+
     }
 
     @Override
